@@ -1241,6 +1241,9 @@ body .display span{font-size:42px!important}
 .scroll-hint.on{opacity:1;transform:translateX(-50%) translateY(0)}
 .scroll-hint b{color:#E8C87A;font-weight:400}
 </style>
+<style>
+.next-cue{margin:16px 0 2px!important;font-family:'PT Serif',Georgia,serif!important;font-size:12px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:#8A6A2E!important}
+</style>
 </head>
 <body>
 
@@ -1903,7 +1906,7 @@ function render(res,name){
   if(!ambiguous(res,'Sun'))facts.push('Солнце в знаке «'+SIGNS[res.signs.Sun]+'»');
   if(res.timeKnown||!ambiguous(res,'Moon'))facts.push('Луна в знаке «'+SIGNS[res.signs.Moon]+'»');
   if(!ambiguous(res,'Rahu'))facts.push('Раху, точка миссии, в знаке «'+SIGNS[res.signs.Rahu]+'»');
-  if(inp.d){var sk=el('div','skyline');sk.innerHTML='<svg class="starfig" viewBox="0 0 270 230" aria-hidden="true"><circle class="ring" cx="135" cy="120" r="80"/><circle class="ring" cx="135" cy="120" r="98"/><path class="ln" pathLength="1" d="M135.0,40.0 L182.0,184.7 L58.9,95.3 L211.1,95.3 L88.0,184.7 L135.0,40.0 Z"/><circle class="nd" cx="135.0" cy="40.0" r="4.5" style="animation-delay:0.5s"/><circle class="nd" cx="211.1" cy="95.3" r="4.5" style="animation-delay:0.9s"/><circle class="nd" cx="182.0" cy="184.7" r="4.5" style="animation-delay:1.4s"/><circle class="nd" cx="88.0" cy="184.7" r="4.5" style="animation-delay:1.9s"/><circle class="nd" cx="58.9" cy="95.3" r="4.5" style="animation-delay:2.3s"/><text x="135" y="24" text-anchor="middle">тело</text><text x="222" y="100" text-anchor="start">деньги</text><text x="182" y="208" text-anchor="middle">дом</text><text x="88" y="208" text-anchor="middle">отношения</text><text x="48" y="100" text-anchor="end">дело</text></svg><span class="tag">Твоя звезда</span><p><b>'+inp.d+' '+MON_G[inp.m-1]+' '+inp.y+'.</b> В этот день небо выглядело так: '+facts.join(', ')+'. Именно с этих трёх точек начинается твоя карта.</p><p class="small">Впереди пять сфер, примерно три минуты. Темп твой: читай по одной сфере или открой все сразу. В конце ты увидишь, какие сферы совпали с тобой.</p><div class="vsay"><span class="vseal" aria-hidden="true"></span>Читай не спеша, я рядом.</div>';R.appendChild(sk)}
+  if(inp.d){var sk=el('div','skyline');sk.innerHTML='<svg class="starfig" viewBox="0 0 270 230" aria-hidden="true"><circle class="ring" cx="135" cy="120" r="80"/><circle class="ring" cx="135" cy="120" r="98"/><path class="ln" pathLength="1" d="M135.0,40.0 L182.0,184.7 L58.9,95.3 L211.1,95.3 L88.0,184.7 L135.0,40.0 Z"/><circle class="nd" cx="135.0" cy="40.0" r="4.5" style="animation-delay:0.5s"/><circle class="nd" cx="211.1" cy="95.3" r="4.5" style="animation-delay:0.9s"/><circle class="nd" cx="182.0" cy="184.7" r="4.5" style="animation-delay:1.4s"/><circle class="nd" cx="88.0" cy="184.7" r="4.5" style="animation-delay:1.9s"/><circle class="nd" cx="58.9" cy="95.3" r="4.5" style="animation-delay:2.3s"/><text x="135" y="24" text-anchor="middle">тело</text><text x="222" y="100" text-anchor="start">деньги</text><text x="182" y="208" text-anchor="middle">дом</text><text x="88" y="208" text-anchor="middle">отношения</text><text x="48" y="100" text-anchor="end">дело</text></svg><span class="tag">Твоя звезда</span><p><b>'+inp.d+' '+MON_G[inp.m-1]+' '+inp.y+'.</b> В этот день небо выглядело так: '+facts.join(', ')+'. Именно с этих трёх точек начинается твоя карта.</p><p class="small">Впереди пять сфер, примерно три минуты. Темп твой: читай по одной сфере или открой все сразу. В конце ты увидишь, какие сферы совпали с тобой.</p><p class=\"next-cue\">Дальше — пять сфер твоей жизни ↓</p><div class="vsay"><span class="vseal" aria-hidden="true"></span>Читай не спеша, я рядом.</div>';R.appendChild(sk)}
 
   // ---- блоки ----
   var B=[];
