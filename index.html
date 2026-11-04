@@ -377,7 +377,7 @@ footer .legal .vseal{width:15px;height:15px;margin-right:7px;vertical-align:-2px
   <form class="hero-form" id="calcForm" novalidate>
       <p class="form-cap">Это первая страница твоей карты, твоя путеводная звезда</p>
       <label class="hf"><span>Твоя дата рождения</span><input type="text" id="fDate" inputmode="numeric" autocomplete="bday" placeholder="ДД.ММ.ГГГГ" maxlength="10" aria-label="Дата рождения"></label>
-      <button type="submit" class="btn btn-gold" id="fBtn" data-goal="hero_cta">Показать мою звезду</button>
+      <button type="submit" class="btn btn-gold" id="fBtn" data-goal="hero_cta">Начать бесплатно</button>
       <p class="after-cta">Твой разбор откроется ниже ↓</p>
       <details class="tm"><summary>Нажми: если знаешь время рождения, расчёт будет точнее</summary>
         <label class="f"><span>Время рождения</span><input type="text" id="fTime" inputmode="numeric" placeholder="ЧЧ:ММ" maxlength="5" aria-label="Время рождения"></label>
@@ -2057,6 +2057,27 @@ body .display{margin-top:8px!important}
 .vs-arch.vs-hero img{height:118px!important}
 body .display{font-size:42px!important}
 body .display span{font-size:42px!important}
+</style>
+<script>
+(function(){
+  var form=document.getElementById('calcForm'), btn=document.getElementById('fBtn'), d=document.getElementById('fDate');
+  if(!form||!btn||!d) return;
+  btn.addEventListener('click',function(e){
+    var v=(d.value||'').replace(/\D/g,'');
+    if(v.length<8){
+      e.preventDefault();
+      d.focus({preventScroll:true});
+      var r=d.getBoundingClientRect(), y=r.top+window.pageYOffset-window.innerHeight*0.38;
+      window.scrollTo({top:y,behavior:'smooth'});
+      var box=d.closest('.hf'); if(box){box.classList.add('pulse'); setTimeout(function(){box.classList.remove('pulse')},2600)}
+      return;
+    }
+  });
+})();
+</script>
+<style>
+@keyframes hfpulse{0%{box-shadow:0 0 0 0 rgba(154,110,20,.35)}100%{box-shadow:0 0 0 8px rgba(154,110,20,0)}}
+.hero-form .hf.pulse{border-color:#9A6E14!important;animation:hfpulse 1.2s ease-out 2}
 </style>
 </body>
 </html>
