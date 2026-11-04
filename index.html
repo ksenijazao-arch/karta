@@ -378,6 +378,7 @@ footer .legal .vseal{width:15px;height:15px;margin-right:7px;vertical-align:-2px
       <p class="form-cap">Это первая страница твоей карты, твоя путеводная звезда</p>
       <label class="hf"><span>Твоя дата рождения</span><input type="text" id="fDate" inputmode="numeric" autocomplete="bday" placeholder="ДД.ММ.ГГГГ" maxlength="10" aria-label="Дата рождения"></label>
       <button type="submit" class="btn btn-gold" id="fBtn" data-goal="hero_cta">Показать мою звезду</button>
+      <p class="after-cta">Твой разбор откроется ниже ↓</p>
       <details class="tm"><summary>Нажми: если знаешь время рождения, расчёт будет точнее</summary>
         <label class="f"><span>Время рождения</span><input type="text" id="fTime" inputmode="numeric" placeholder="ЧЧ:ММ" maxlength="5" aria-label="Время рождения"></label>
         <label class="f"><span>Где ты родилась (часовой пояс)</span><select id="fTz" aria-label="Часовой пояс места рождения"><option value="Europe/Kaliningrad">Калининград</option><option value="Europe/Moscow">Москва, Санкт-Петербург</option><option value="Europe/Minsk">Минск</option><option value="Europe/Volgograd">Волгоград</option><option value="Europe/Samara">Самара, Ижевск</option><option value="Asia/Yekaterinburg">Екатеринбург, Челябинск</option><option value="Asia/Omsk">Омск</option><option value="Asia/Novosibirsk">Новосибирск</option><option value="Asia/Krasnoyarsk">Красноярск</option><option value="Asia/Irkutsk">Иркутск</option><option value="Asia/Yakutsk">Якутск, Чита</option><option value="Asia/Vladivostok">Владивосток</option><option value="Asia/Magadan">Магадан, Сахалин</option><option value="Asia/Kamchatka">Камчатка</option><option value="Europe/Kyiv">Киев</option><option value="Asia/Almaty">Алматы</option><option value="Asia/Tashkent">Ташкент</option><option value="Asia/Tbilisi">Тбилиси</option><option value="Asia/Yerevan">Ереван</option><option value="Asia/Baku">Баку</option><option value="Europe/Berlin">Берлин, Европа</option><option value="Europe/London">Лондон</option><option value="America/New_York">Нью-Йорк</option><option value="Asia/Jerusalem">Израиль</option><option value="Asia/Dubai">Дубай</option></select></label>
@@ -2015,6 +2016,47 @@ body .display{margin-top:12px!important}
 <style>
 .spheres{gap:5px!important}
 .spheres li{font-size:12px!important;padding:4px 8px 5px!important}
+</style>
+<style>
+#result .flav,#calc .flav{background:#F6ECD8!important;color:#2B2118!important;border:1px solid rgba(154,110,20,.22)!important;padding:14px 15px!important}
+#result .flav *,#calc .flav *{color:#2B2118!important}
+#result .vsay{background:rgba(154,110,20,.05)!important;border-left:1px solid rgba(154,110,20,.35)!important;padding:10px 12px!important}
+#result .timeline{background:rgba(154,110,20,.06)!important}
+</style>
+<style>
+.after-cta{margin:8px 0 0!important;font-size:12px!important;letter-spacing:.02em!important;color:#6B5F4E!important;text-align:center!important}
+</style>
+<script>
+(function(){
+  var calc=document.getElementById('calc'); if(!calc) return;
+  var done=false;
+  function go(){
+    if(done||calc.hidden) return; done=true;
+    setTimeout(function(){ calc.scrollIntoView({behavior:'smooth',block:'start'}); }, 350);
+  }
+  new MutationObserver(go).observe(calc,{attributes:true,attributeFilter:['hidden']});
+  window.addEventListener('load',go);
+})();
+</script>
+<style>
+.hero-form .after-cta{order:3!important}
+.hero-form .tm{order:4!important}
+.hero-form .err{order:5!important}
+</style>
+<style>
+body .display{margin-top:8px!important}
+.whisper{margin-top:8px!important}
+.pitch{margin-top:11px!important;padding-top:10px!important}
+.warn{margin-top:12px!important;padding:11px 14px!important}
+.hero-form{margin-top:12px!important}
+.hero-form .btn{margin-top:10px!important}
+.after-cta{margin:6px 0 0!important;font-size:11.5px!important}
+</style>
+<style>
+.vs-arch.vs-hero{height:118px!important}
+.vs-arch.vs-hero img{height:118px!important}
+body .display{font-size:42px!important}
+body .display span{font-size:42px!important}
 </style>
 </body>
 </html>
