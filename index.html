@@ -1236,6 +1236,11 @@ body .display span{font-size:42px!important}
 .display span{display:inline!important}
 .display .last{white-space:nowrap}
 </style>
+<style>
+.scroll-hint{position:fixed;left:50%;transform:translateX(-50%) translateY(8px);bottom:94px;z-index:70;background:#2B2118;color:#F7EFE0;font-family:'PT Serif',Georgia,serif;font-size:12.5px;letter-spacing:.02em;padding:9px 15px 10px;border-radius:999px;box-shadow:0 6px 18px rgba(43,33,24,.28);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;white-space:nowrap}
+.scroll-hint.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.scroll-hint b{color:#E8C87A;font-weight:400}
+</style>
 </head>
 <body>
 
@@ -2081,6 +2086,22 @@ w.querySelector('.next').onclick=function(){t.scrollBy({left:t.clientWidth*0.9,b
       return;
     }
   });
+})();
+</script>
+<div class="scroll-hint" id="scrollHint">Листай ниже — <b>там пять сфер</b> ↓</div>
+<script>
+(function(){
+  var calc=document.getElementById('calc'), hint=document.getElementById('scrollHint');
+  if(!calc||!hint) return;
+  var shown=false;
+  function show(){
+    if(shown||calc.hidden) return; shown=true;
+    setTimeout(function(){ hint.classList.add('on'); },1400);
+    setTimeout(function(){ hint.classList.remove('on'); },12000);
+  }
+  try{ new MutationObserver(show).observe(calc,{attributes:true,attributeFilter:['hidden','class','style']}); }catch(e){}
+  var n=0, iv=setInterval(function(){ show(); if(shown||++n>20) clearInterval(iv); },500);
+  window.addEventListener('load',show);
 })();
 </script>
 </body>
